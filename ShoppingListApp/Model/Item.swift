@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+class Item: Codable {
+    init(itemName: String, id: UUID = UUID()) {
+        self.itemName = itemName
+        self.id = id
+    }
+    
+    var itemName: String
+    var id: UUID
+    var isComplete = false
+}
+
+extension Item: Equatable {}
+    
+func == (lhs: Item, rhs: Item) -> Bool {
+    return lhs.id == rhs.id
+}
+    
+
