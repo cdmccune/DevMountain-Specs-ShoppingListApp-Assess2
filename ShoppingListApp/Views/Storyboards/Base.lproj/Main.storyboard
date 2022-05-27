@@ -3,11 +3,12 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item List Table View Controller-->
+        <!--Shopping List-->
         <scene sceneID="PQv-L9-uRf">
             <objects>
                 <tableViewController id="MmS-li-nBm" customClass="ItemListTableViewController" customModule="ShoppingListApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,12 +18,47 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="9wE-qa-65F" customClass="ItemListTableViewCell" customModule="ShoppingListApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wE-qa-65F" id="VI3-yr-XYH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="N3C-2u-fN8">
+                                            <rect key="frame" x="31" y="0.0" width="352" height="60.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEv-SO-Ru1">
+                                                    <rect key="frame" x="0.0" y="13.5" width="262" height="33.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <color key="textColor" name="AccentColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-Zx-jnI">
+                                                    <rect key="frame" x="292" y="1.5" width="60" height="57.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="pnl-Zx-jnI" secondAttribute="height" multiplier="1:1" id="3Pz-xw-Wke"/>
+                                                        <constraint firstAttribute="height" constant="60" id="QDk-Nw-GMD"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" backgroundImage="square" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="completedButtonDidClick:" destination="9wE-qa-65F" eventType="touchUpInside" id="22D-e8-Pkz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="N3C-2u-fN8" firstAttribute="height" secondItem="VI3-yr-XYH" secondAttribute="height" id="Dog-IT-aUJ"/>
+                                        <constraint firstItem="N3C-2u-fN8" firstAttribute="centerX" secondItem="VI3-yr-XYH" secondAttribute="centerX" id="RQl-ed-qCc"/>
+                                        <constraint firstItem="N3C-2u-fN8" firstAttribute="centerY" secondItem="VI3-yr-XYH" secondAttribute="centerY" id="V2m-yf-uGD"/>
+                                        <constraint firstItem="N3C-2u-fN8" firstAttribute="width" secondItem="VI3-yr-XYH" secondAttribute="width" multiplier="0.85" id="r8P-T5-dYd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completedButton" destination="pnl-Zx-jnI" id="Jrg-Xb-eXf"/>
+                                    <outlet property="itemLabel" destination="TEv-SO-Ru1" id="XzQ-pE-dBG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -30,7 +66,9 @@
                             <outlet property="delegate" destination="MmS-li-nBm" id="Y7d-7c-KwW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="adf-RH-8sQ"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="adf-RH-8sQ">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PX3-gd-xTr"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e1-MD-56W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,6 +94,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

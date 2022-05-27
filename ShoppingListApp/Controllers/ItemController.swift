@@ -15,13 +15,16 @@ class ItemController {
     static var shared = ItemController()
     
     //The source of truth within the static instance
-    var items = [Item]()
+//    var items = [Item]()
+    var items = [
+        Item(withName: "Apple")
+    ]
     
     
     //MARK: - ItemList Changing Functions
     
     func addItem (name: String) {
-        let item = Item(itemName: name)
+        let item = Item(withName: name)
         items.append(item)
         saveToPersistentStorage()
     }

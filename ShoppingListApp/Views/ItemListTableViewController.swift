@@ -14,35 +14,40 @@ class ItemListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "Shopping List"
+        
+        
     }
 
     // MARK: - Table view data source & editing
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ItemController.shared.items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemListTableViewCell else {return UITableViewCell()}
+        
+        cell.item = ItemController.shared.items[indexPath.row]
+        cell.delegate = self
+        
         return cell
     }
     
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            let item = ItemController.shared.items[indexPath.row]
+            ItemController.shared.deleteItem(item: item)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    
+
 
 
     /*
@@ -55,4 +60,17 @@ class ItemListTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+//Inside of this delegate extension, we want to build out the functionality we want to happen when the button is tapped, only then will the tableviewcontroller truly act as a delegate.
+
+extension ItemListTableViewController: ItemCompletionDelegate {
+    func itemCellButtonTapped(_ sender: ItemListTableViewCell) {
+        guard let item = sender.item else {return}
+        ItemController.shared.toggleIsComplete(item: item)
+        sender.updateViews()
+    }
+    
+    
 }

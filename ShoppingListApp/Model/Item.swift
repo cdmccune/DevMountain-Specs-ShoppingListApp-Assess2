@@ -8,7 +8,7 @@
 import Foundation
 
 class Item: Codable {
-    init(itemName: String, id: UUID = UUID()) {
+    init( withName itemName: String, id: UUID = UUID()) {
         self.itemName = itemName
         self.id = id
     }
