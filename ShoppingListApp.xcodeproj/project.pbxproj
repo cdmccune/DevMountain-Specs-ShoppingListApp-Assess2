@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		24D572EB284133C8003679DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D572EA284133C8003679DC /* AppDelegate.swift */; };
 		24D572ED284133C8003679DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D572EC284133C8003679DC /* SceneDelegate.swift */; };
-		24D572EF284133C8003679DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D572EE284133C8003679DC /* ViewController.swift */; };
 		24D572F2284133C8003679DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D572F0284133C8003679DC /* Main.storyboard */; };
 		24D572F4284133CF003679DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D572F3284133CF003679DC /* Assets.xcassets */; };
 		24D572F7284133CF003679DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D572F5284133CF003679DC /* LaunchScreen.storyboard */; };
+		24D573012841341A003679DC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D573002841341A003679DC /* Item.swift */; };
+		24D5730328413432003679DC /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D5730228413432003679DC /* ItemController.swift */; };
+		24D573052841344F003679DC /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D573042841344F003679DC /* ItemListTableViewCell.swift */; };
+		24D5730728413470003679DC /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D5730628413470003679DC /* ItemListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24D572E7284133C8003679DC /* ShoppingListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D572EA284133C8003679DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D572EC284133C8003679DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		24D572EE284133C8003679DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24D572F1284133C8003679DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24D572F3284133CF003679DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24D572F6284133CF003679DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24D572F8284133CF003679DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24D573002841341A003679DC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		24D5730228413432003679DC /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		24D573042841344F003679DC /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
+		24D5730628413470003679DC /* ItemListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		24D572E9284133C8003679DC /* ShoppingListApp */ = {
 			isa = PBXGroup;
 			children = (
-				24D572EA284133C8003679DC /* AppDelegate.swift */,
-				24D572EC284133C8003679DC /* SceneDelegate.swift */,
-				24D572EE284133C8003679DC /* ViewController.swift */,
-				24D572F0284133C8003679DC /* Main.storyboard */,
-				24D572F3284133CF003679DC /* Assets.xcassets */,
-				24D572F5284133CF003679DC /* LaunchScreen.storyboard */,
-				24D572F8284133CF003679DC /* Info.plist */,
+				24D573082841348C003679DC /* Views */,
+				24D5730A284134AE003679DC /* Model */,
+				24D572FE284133E5003679DC /* Resources */,
+				24D57309284134A4003679DC /* Controllers */,
 			);
 			path = ShoppingListApp;
+			sourceTree = "<group>";
+		};
+		24D572FE284133E5003679DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				24D572EA284133C8003679DC /* AppDelegate.swift */,
+				24D572EC284133C8003679DC /* SceneDelegate.swift */,
+				24D572F3284133CF003679DC /* Assets.xcassets */,
+				24D572F8284133CF003679DC /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		24D572FF284133F8003679DC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				24D572F0284133C8003679DC /* Main.storyboard */,
+				24D572F5284133CF003679DC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		24D573082841348C003679DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				24D572FF284133F8003679DC /* Storyboards */,
+				24D5730628413470003679DC /* ItemListTableViewController.swift */,
+				24D573042841344F003679DC /* ItemListTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		24D57309284134A4003679DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24D5730228413432003679DC /* ItemController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24D5730A284134AE003679DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				24D573002841341A003679DC /* Item.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24D572EF284133C8003679DC /* ViewController.swift in Sources */,
+				24D573012841341A003679DC /* Item.swift in Sources */,
+				24D5730728413470003679DC /* ItemListTableViewController.swift in Sources */,
+				24D573052841344F003679DC /* ItemListTableViewCell.swift in Sources */,
 				24D572EB284133C8003679DC /* AppDelegate.swift in Sources */,
+				24D5730328413432003679DC /* ItemController.swift in Sources */,
 				24D572ED284133C8003679DC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
