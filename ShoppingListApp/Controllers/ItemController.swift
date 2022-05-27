@@ -16,17 +16,18 @@ class ItemController {
     
     //The source of truth within the static instance
 //    var items = [Item]()
-    var items = [
-        Item(withName: "Apple")
-    ]
+    var items = [Item]()
     
     
     //MARK: - ItemList Changing Functions
     
     func addItem (name: String) {
-        let item = Item(withName: name)
-        items.append(item)
-        saveToPersistentStorage()
+        if name != "" {
+            let item = Item(withName: name)
+            items.append(item)
+            
+            saveToPersistentStorage()
+        }
     }
     
     func deleteItem (item: Item) {
@@ -69,5 +70,6 @@ class ItemController {
             let items = try jd.decode([Item].self, from: data)
             self.items = items
         } catch let e {print("Error decoding data: \(e)")}
+        
     }
 }

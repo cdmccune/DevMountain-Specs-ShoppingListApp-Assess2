@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="9wE-qa-65F" customClass="ItemListTableViewCell" customModule="ShoppingListApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="itemCell" id="9wE-qa-65F" customClass="ItemListTableViewCell" customModule="ShoppingListApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wE-qa-65F" id="VI3-yr-XYH">
@@ -67,7 +67,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Shopping List" id="adf-RH-8sQ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PX3-gd-xTr"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PX3-gd-xTr">
+                            <connections>
+                                <action selector="addButtonDidClick:" destination="MmS-li-nBm" id="c2T-Hu-mc4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e1-MD-56W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

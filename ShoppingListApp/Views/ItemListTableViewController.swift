@@ -14,11 +14,31 @@ class ItemListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Shopping List"
-        
-        
+        ItemController.shared.loadFromPersistentStorage()
     }
 
+    //MARK: - Button Functionality
+    
+    @IBAction func addButtonDidClick(_ sender: Any) {
+        
+        
+        
+        let addAlertController = UIAlertController(title: "Add Shopping Item", message: "Please enter the item you wish to add", preferredStyle: .alert)
+        let addAction = UIAlertAction(title: "Add", style: .default, handler: { _ in
+            let textField = addAlertController.textFields![0]
+            ItemController.shared.addItem(name: textField.text!)
+            self.tableView.reloadData()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        addAlertController.addTextField {textField in
+            textField.placeholder = "Your item..."
+        }
+        [addAction, cancelAction].forEach({addAlertController.addAction($0)})
+        self.present(addAlertController, animated: true, completion: nil)
+    }
+    
+    
+    
     // MARK: - Table view data source & editing
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
