@@ -16,7 +16,9 @@ class ItemController {
     
     //The source of truth within the static instance
 //    var items = [Item]()
-    var items = [Item]()
+    var items = [[Item(withName: "Banana")], [Item(withName: "Apple", isComplete: 1)]]
+    
+    
     
     
     //MARK: - ItemList Changing Functions
@@ -24,21 +26,29 @@ class ItemController {
     func addItem (name: String) {
         if name != "" {
             let item = Item(withName: name)
-            items.append(item)
+            items[item.isComplete].append(item)
             
             saveToPersistentStorage()
         }
     }
     
     func deleteItem (item: Item) {
-        if let index = items.firstIndex(of: item) {
-            items.remove(at: index)
+        if let index = items[item.isComplete].firstIndex(of: item) {
+            items[item.isComplete].remove(at: index)
+          
+            
+//            print("item name \(items[item.isComplete][index].itemName)")
         }
+        
         saveToPersistentStorage()
     }
     
     func toggleIsComplete(item: Item) {
-        item.isComplete.toggle()
+        if item.isComplete == 0 {
+            item.isComplete = 1
+        } else {
+            item.isComplete = 0
+        }
         saveToPersistentStorage()
     }
     
@@ -67,7 +77,7 @@ class ItemController {
         
         do {
             let data = try Data(contentsOf: fileURL())
-            let items = try jd.decode([Item].self, from: data)
+            let items = try jd.decode([[Item]].self, from: data)
             self.items = items
         } catch let e {print("Error decoding data: \(e)")}
         

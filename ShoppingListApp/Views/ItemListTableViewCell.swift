@@ -29,11 +29,13 @@ class ItemListTableViewCell: UITableViewCell {
             itemLabel.text = item.itemName
             
             switch item.isComplete {
-            case true:
+            case 1:
                 completedButton.setBackgroundImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            case false:
+            case 0:
                 completedButton.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
+            default: print("This should never happen")
             }
+        
         }
     }
     

@@ -8,14 +8,15 @@
 import Foundation
 
 class Item: Codable {
-    init( withName itemName: String, id: UUID = UUID()) {
+    init( withName itemName: String, id: UUID = UUID(), isComplete: Int = 0) {
         self.itemName = itemName
         self.id = id
+        self.isComplete = isComplete
     }
     
     var itemName: String
     var id: UUID
-    var isComplete = false
+    var isComplete: Int
 }
 
 extension Item: Equatable {}
